@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Log in to Alpha Pack Capital Max">
+  <title>Log In | Alpha Pack Capital Max</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body style="background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); min-height: 100vh; display: flex; align-items: center; padding: 20px;">
+  <div class="container" style="max-width: 450px;">
+    <!-- Logo -->
+    <div style="text-align: center; margin-bottom: 40px;">
+      <a href="index.html" style="display: inline-flex; align-items: center; gap: 12px; text-decoration: none; margin-bottom: 16px;">
+        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #5283f5 0%, #3b65e8 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.25rem;">AP</div>
+        <span style="font-size: 1.25rem; font-weight: 700; color: #0f1535;">Alpha Pack Capital Max</span>
+      </a>
+      <p style="color: #4b5563; margin-bottom: 0;">Welcome back to your student loans</p>
+    </div>
+
+    <!-- Login Card -->
+    <div class="card">
+      <form id="loginForm">
+        <h2 style="text-align: center; margin-bottom: 8px; color: #0f1535;">Log In</h2>
+        <p style="text-align: center; color: #4b5563; margin-bottom: 32px;">Access your account and manage your loans</p>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label required">Email Address</label>
+          <input type="email" name="email" class="input" placeholder="your@example.com" required>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label class="form-label required">Password</label>
+          <input type="password" name="password" class="input" placeholder="Your password" required>
+        </div>
+
+        <!-- Remember & Forgot -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" name="remember" style="width: 18px; height: 18px;">
+            <span style="font-size: 0.875rem; color: #4b5563;">Remember me</span>
+          </label>
+          <a href="#" style="font-size: 0.875rem; color: #4d63ff;">Forgot password?</a>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary btn-full btn-lg">
+          Log In
+        </button>
+
+        <!-- Divider -->
+        <div style="display: flex; align-items: center; gap: 16px; margin: 24px 0;">
+          <div style="flex: 1; height: 1px; background: #e5e7eb;"></div>
+          <span style="color: #4b5563; font-size: 0.875rem;">Don't have an account?</span>
+          <div style="flex: 1; height: 1px; background: #e5e7eb;"></div>
+        </div>
+
+        <!-- Sign Up -->
+        <a href="register.html" class="btn btn-secondary btn-full btn-lg">
+          Create Account
+        </a>
+      </form>
+
+      <!-- Or Admin -->
+      <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+        <p style="font-size: 0.875rem; color: #4b5563; margin-bottom: 8px;">Admin user?</p>
+        <a href="admin/login.html" style="color: #4d63ff; font-weight: 600; text-decoration: none;">Go to admin login</a>
+      </div>
+    </div>
+
+    <!-- Support -->
+    <div style="text-align: center; margin-top: 32px; color: #4b5563; font-size: 0.875rem;">
+      <p style="margin-bottom: 8px;">Having trouble logging in?</p>
+      <a href="https://wa.me/26776807549?text=I%20cannot%20log%20in%20to%20my%20account" style="color: #4d63ff; text-decoration: none; font-weight: 600;">
+        Contact support on WhatsApp
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <p style="text-align: center; font-size: 0.75rem; color: #4b5563; margin-top: 32px;">
+      © 2024 Alpha Pack Capital Max
+    </p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

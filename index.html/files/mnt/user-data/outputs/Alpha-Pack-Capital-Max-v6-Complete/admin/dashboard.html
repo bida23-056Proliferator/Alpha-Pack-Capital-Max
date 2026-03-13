@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Admin Dashboard | Alpha Pack Capital Max">
+  <title>Admin Dashboard | Alpha Pack Capital Max</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body style="background: #f9fafb;">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">AP</div>
+        <span>Admin Panel</span>
+      </a>
+      <nav class="nav-menu">
+        <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+        <li><a href="kyc-queue.html" class="nav-link">KYC Queue</a></li>
+        <li><a href="loan-queue.html" class="nav-link">Loan Queue</a></li>
+        <li><a href="analytics.html" class="nav-link">Analytics</a></li>
+        <li><a href="ads.html" class="nav-link">Ads</a></li>
+        <li><a href="students.html" class="nav-link">Students</a></li>
+      </nav>
+      <div class="header-actions">
+        <button id="adminLogout" class="btn btn-secondary btn-sm">Log Out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main style="padding: 40px 0 80px; margin-top: 70px;">
+    <div class="container">
+      <!-- Page Title -->
+      <div style="margin-bottom: 40px;">
+        <h1 style="margin-bottom: 8px;">Dashboard</h1>
+        <p style="color: #4b5563;">Real-time business metrics and insights</p>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="grid grid-4" style="margin-bottom: 40px;">
+        <div class="metric">
+          <p class="metric-label">Total Students</p>
+          <p class="metric-value" id="totalUsers">—</p>
+          <div class="metric-change positive">↑ Active users</div>
+        </div>
+        <div class="metric">
+          <p class="metric-label">Total Applications</p>
+          <p class="metric-value" id="totalLoans">—</p>
+          <div class="metric-change positive">↑ Loan requests</div>
+        </div>
+        <div class="metric">
+          <p class="metric-label">Pending Approvals</p>
+          <p class="metric-value" id="pendingLoans">—</p>
+          <div class="metric-change neutral">Under review</div>
+        </div>
+        <div class="metric">
+          <p class="metric-label">Approved Loans</p>
+          <p class="metric-value" id="approvedLoans">—</p>
+          <div class="metric-change positive">Disbursed</div>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="grid grid-2" style="margin-bottom: 40px;">
+        <!-- Recent Loans -->
+        <div>
+          <h3 style="margin-bottom: 16px;">Recent Loan Applications</h3>
+          <div id="recentLoans" style="display: flex; flex-direction: column; gap: 12px;"></div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div>
+          <h3 style="margin-bottom: 16px;">Quick Actions</h3>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <a href="kyc-queue.html" class="card" style="display: flex; align-items: center; gap: 12px; padding: 16px; text-decoration: none; cursor: pointer;">
+              <div style="font-size: 1.5rem;">📸</div>
+              <div>
+                <p style="font-weight: 600; margin: 0; color: #0f1535;">Review KYC Submissions</p>
+                <p style="font-size: 0.875rem; color: #4b5563; margin: 0;">Verify student IDs</p>
+              </div>
+              <div style="margin-left: auto;">→</div>
+            </a>
+            <a href="loan-queue.html" class="card" style="display: flex; align-items: center; gap: 12px; padding: 16px; text-decoration: none; cursor: pointer;">
+              <div style="font-size: 1.5rem;">💰</div>
+              <div>
+                <p style="font-weight: 600; margin: 0; color: #0f1535;">Process Loan Applications</p>
+                <p style="font-size: 0.875rem; color: #4b5563; margin: 0;">Approve or decline</p>
+              </div>
+              <div style="margin-left: auto;">→</div>
+            </a>
+            <a href="analytics.html" class="card" style="display: flex; align-items: center; gap: 12px; padding: 16px; text-decoration: none; cursor: pointer;">
+              <div style="font-size: 1.5rem;">📊</div>
+              <div>
+                <p style="font-weight: 600; margin: 0; color: #0f1535;">View Analytics</p>
+                <p style="font-size: 0.875rem; color: #4b5563; margin: 0;">Charts and insights</p>
+              </div>
+              <div style="margin-left: auto;">→</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Status -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">System Status</h3>
+        </div>
+        <div class="card-body">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 12px; height: 12px; background: #10b981; border-radius: 50%;"></div>
+              <div>
+                <p style="font-weight: 600; margin: 0; font-size: 0.875rem;">Database</p>
+                <p style="color: #4b5563; margin: 0; font-size: 0.75rem;">Connected</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 12px; height: 12px; background: #10b981; border-radius: 50%;"></div>
+              <div>
+                <p style="font-weight: 600; margin: 0; font-size: 0.875rem;">Authentication</p>
+                <p style="color: #4b5563; margin: 0; font-size: 0.75rem;">Operational</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 12px; height: 12px; background: #10b981; border-radius: 50%;"></div>
+              <div>
+                <p style="font-weight: 600; margin: 0; font-size: 0.875rem;">File Storage</p>
+                <p style="color: #4b5563; margin: 0; font-size: 0.75rem;">Operational</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: white; border-top: 1px solid #e5e7eb; padding: 32px 0; color: #4b5563; font-size: 0.875rem;">
+    <div class="container">
+      <div style="text-align: center;">
+        <p>© 2024 Alpha Pack Capital Max - Admin Panel</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script type="module" src="../assets/js/app.js"></script>
+</body>
+</html>

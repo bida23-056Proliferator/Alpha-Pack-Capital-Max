@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register for Alpha Pack Capital Max - Student Loans">
+  <title>Register | Alpha Pack Capital Max</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">AP</div>
+        <span>Alpha Pack Capital Max</span>
+      </a>
+      <div class="header-actions">
+        <a href="login.html" class="btn btn-secondary btn-sm">Log In</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main style="padding: 80px 0; background: #f9fafb; min-height: 100vh;">
+    <div class="container" style="max-width: 600px;">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Create Your Account</h2>
+          <p class="card-description">Join thousands of Botswana students getting funded</p>
+        </div>
+
+        <form id="registerForm" class="card-body" style="padding: 0;">
+          <!-- Personal Information Section -->
+          <div style="margin-bottom: 32px; padding-bottom: 24px; border-bottom: 2px solid #e5e7eb;">
+            <h4 style="margin-bottom: 16px; font-size: 1.125rem; font-weight: 600;">Personal Information</h4>
+
+            <div class="form-group">
+              <label class="form-label required">Full Name</label>
+              <input type="text" name="fullName" class="input" placeholder="Your full name" required>
+              <div class="form-hint">As it appears on your Student ID</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required">Email Address</label>
+              <input type="email" name="email" class="input" placeholder="you@example.com" required>
+              <div class="form-hint">We'll send a confirmation email</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required">Phone Number</label>
+              <input type="tel" name="phone" class="input" placeholder="+267 XX XXX XXX" required>
+              <div class="form-hint">Include country code for international numbers</div>
+            </div>
+          </div>
+
+          <!-- Educational Information Section -->
+          <div style="margin-bottom: 32px; padding-bottom: 24px; border-bottom: 2px solid #e5e7eb;">
+            <h4 style="margin-bottom: 16px; font-size: 1.125rem; font-weight: 600;">Educational Information</h4>
+
+            <div class="form-group">
+              <label class="form-label required">Institution</label>
+              <select name="institution" class="input" required>
+                <option value="">Select your institution</option>
+                <option value="University of Botswana">University of Botswana</option>
+                <option value="Botswana International University of Science and Technology">BIUST</option>
+                <option value="Limkokwing University">Limkokwing University</option>
+                <option value="Gaborone University of Science and Technology">GUST</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required">Program / Course</label>
+              <input type="text" name="program" class="input" placeholder="e.g., Engineering, Commerce, Medicine" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required">Year of Study</label>
+              <select name="yearOfStudy" class="input" required>
+                <option value="">Select year</option>
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+                <option value="4">4th Year</option>
+                <option value="5">5th Year</option>
+                <option value="6">Postgraduate</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required">Student ID Number</label>
+              <input type="text" name="studentIdNo" class="input" placeholder="Your student ID number" required>
+              <div class="form-hint">Found on your student card</div>
+            </div>
+          </div>
+
+          <!-- Security Section -->
+          <div style="margin-bottom: 24px;">
+            <h4 style="margin-bottom: 16px; font-size: 1.125rem; font-weight: 600;">Create Password</h4>
+
+            <div class="form-group">
+              <label class="form-label required">Password</label>
+              <input type="password" name="password" class="input" placeholder="At least 8 characters" minlength="8" required>
+              <div class="form-hint">Use letters, numbers, and symbols for security</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required">Confirm Password</label>
+              <input type="password" name="confirmPassword" class="input" placeholder="Repeat your password" required>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn btn-primary btn-full btn-lg">
+            Create Account
+          </button>
+
+          <!-- Already have account -->
+          <p style="text-align: center; margin-top: 16px; color: #4b5563;">
+            Already have an account? 
+            <a href="login.html" style="color: #4d63ff; font-weight: 600;">Log in here</a>
+          </p>
+        </form>
+
+        <!-- Terms -->
+        <div class="card-footer" style="border-top: 2px solid #e5e7eb; background: none;">
+          <p style="font-size: 0.75rem; color: #4b5563; text-align: center; margin: 0;">
+            By registering, you agree to our
+            <a href="#" style="color: #4d63ff;">Terms of Service</a> and
+            <a href="#" style="color: #4d63ff;">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Support -->
+      <div style="text-align: center; margin-top: 32px; color: #4b5563;">
+        <p style="margin-bottom: 8px;">Need help?</p>
+        <p>
+          <a href="https://wa.me/26776807549?text=I%20need%20help%20registering" style="color: #4d63ff; text-decoration: none; font-weight: 600;">
+            WhatsApp Support (+267 76 807 549)
+          </a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: white; border-top: 1px solid #e5e7eb; padding: 24px 0; text-align: center; color: #4b5563; font-size: 0.875rem;">
+    <p>© 2024 Alpha Pack Capital Max. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

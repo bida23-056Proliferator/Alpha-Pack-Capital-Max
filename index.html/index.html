@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Alpha Pack Capital Max - Professional Student Lending Platform for Botswana">
+  <title>Alpha Pack Capital Max | Student Loans</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">AP</div>
+        <span>Alpha Pack Capital Max</span>
+      </a>
+      <nav class="nav-menu">
+        <li class="nav-item"><a href="#packages" class="nav-link">Packages</a></li>
+        <li class="nav-item"><a href="#calculator" class="nav-link">Calculator</a></li>
+        <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
+      </nav>
+      <div class="header-actions">
+        <a href="login.html" class="btn btn-secondary btn-sm">Log In</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section style="padding: 80px 0; background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);">
+    <div class="container">
+      <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+        <h1 style="color: #0f1535; margin-bottom: 20px;">Fast, Reliable Student Loans</h1>
+        <p style="font-size: 1.125rem; color: #4b5563; margin-bottom: 40px;">Get approved in minutes, not days. Designed for Botswana students.</p>
+        <div style="display: flex; gap: 16px; justify-content: center;">
+          <a href="register.html" class="btn btn-primary btn-lg">Apply Now</a>
+          <a href="#calculator" class="btn btn-outline btn-lg">See Calculator</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages Section -->
+  <section id="packages" style="padding: 80px 0;">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 60px;">Choose Your Package</h2>
+      <div class="grid grid-4">
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 16px;">🚀</div>
+          <h4 style="margin-bottom: 8px;">Starter</h4>
+          <p style="font-size: 0.875rem; color: #4b5563; margin-bottom: 16px;">P100 — P500</p>
+          <p style="font-size: 0.875rem;">Quick everyday expenses</p>
+        </div>
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 16px;">📚</div>
+          <h4 style="margin-bottom: 8px;">Boost</h4>
+          <p style="font-size: 0.875rem; color: #4b5563; margin-bottom: 16px;">P500 — P1,000</p>
+          <p style="font-size: 0.875rem;">Medium academic costs</p>
+        </div>
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 16px;">🎓</div>
+          <h4 style="margin-bottom: 8px;">Advance</h4>
+          <p style="font-size: 0.875rem; color: #4b5563; margin-bottom: 16px;">P1,000 — P2,000</p>
+          <p style="font-size: 0.875rem;">Major educational support</p>
+        </div>
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 16px;">💎</div>
+          <h4 style="margin-bottom: 8px;">Premium</h4>
+          <p style="font-size: 0.875rem; color: #4b5563; margin-bottom: 16px;">P2,000 — P5,000</p>
+          <p style="font-size: 0.875rem;">Full-semester coverage</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator Section -->
+  <section id="calculator" style="padding: 80px 0; background: #f9fafb;">
+    <div class="container" style="max-width: 600px;">
+      <h2 style="text-align: center; margin-bottom: 40px;">Loan Calculator</h2>
+      <div class="card">
+        <div class="form-group">
+          <label class="form-label">Select Package</label>
+          <select id="calcPackage" class="input">
+            <option value="starter">Starter (P100-P500)</option>
+            <option value="boost">Boost (P500-P1000)</option>
+            <option value="advance">Advance (P1000-P2000)</option>
+            <option value="premium" selected>Premium (P2000-P5000)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Loan Amount (Pula)</label>
+          <input type="range" id="calcAmount" class="input" min="100" max="5000" value="3000" style="height: auto;">
+          <div style="text-align: center; font-size: 1.5rem; font-weight: 700; color: #4d63ff; margin-top: 12px;">P<span id="amountDisplay">3000</span></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Repayment Period</label>
+          <select id="calcRepayment" class="input">
+            <option value="14">14 days</option>
+            <option value="21">21 days</option>
+            <option value="30" selected>30 days</option>
+          </select>
+        </div>
+        <div style="background: #f3f4f6; padding: 24px; border-radius: 12px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
+            <span style="color: #4b5563;">Principal:</span>
+            <span style="font-weight: 700;">P<span id="calcPrincipal">3000</span></span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
+            <span style="color: #4b5563;">Interest Rate:</span>
+            <span style="font-weight: 700;"><span id="calcRate">25</span>%</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
+            <span style="color: #4b5563;">Interest Amount:</span>
+            <span style="font-weight: 700;">P<span id="calcInterest">750</span></span>
+          </div>
+          <div style="border-top: 2px solid #d1d5db; padding-top: 16px; display: flex; justify-content: space-between;">
+            <span style="color: #0f1535; font-weight: 700;">Total Repayable:</span>
+            <span style="font-size: 1.25rem; font-weight: 700; color: #4d63ff;">P<span id="calcTotal">3750</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section style="padding: 60px 0; text-align: center; background: #0f1535; color: white;">
+    <div class="container">
+      <h2 style="color: white; margin-bottom: 20px;">Ready to Apply?</h2>
+      <p style="color: #c1d0ff; margin-bottom: 30px; font-size: 1.125rem;">Get approved in minutes. No hidden fees.</p>
+      <a href="register.html" class="btn btn-primary btn-lg">Create Account Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: #f9fafb; border-top: 1px solid #e5e7eb; padding: 40px 0; color: #4b5563;">
+    <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <div style="font-weight: 700; color: #0f1535; margin-bottom: 8px;">Alpha Pack Capital Max</div>
+        <p style="font-size: 0.875rem; margin-bottom: 8px;">Professional Student Loans</p>
+        <p style="font-size: 0.875rem;"><a href="https://wa.me/26776807549" style="color: #4d63ff;">+267 76 807 549</a></p>
+      </div>
+      <div>
+        <p style="font-weight: 700; color: #0f1535; margin-bottom: 8px;">Platform</p>
+        <p style="font-size: 0.875rem;"><a href="index.html" style="color: #4b5563;">Home</a></p>
+        <p style="font-size: 0.875rem;"><a href="login.html" style="color: #4b5563;">Log In</a></p>
+        <p style="font-size: 0.875rem;"><a href="register.html" style="color: #4b5563;">Register</a></p>
+      </div>
+      <div>
+        <p style="font-weight: 700; color: #0f1535; margin-bottom: 8px;">Legal</p>
+        <p style="font-size: 0.875rem;"><a href="#" style="color: #4b5563;">Terms</a></p>
+        <p style="font-size: 0.875rem;"><a href="#" style="color: #4b5563;">Privacy</a></p>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #e5e7eb; margin-top: 30px; padding-top: 20px; text-align: center; font-size: 0.875rem;">
+      © 2024 Alpha Pack Capital Max. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script type="module" src="assets/js/app.js"></script>
+  <script>
+    // Simple calculator
+    const amountInput = document.getElementById('calcAmount');
+    const amountDisplay = document.getElementById('amountDisplay');
+    const calcPackage = document.getElementById('calcPackage');
+    
+    const packages = {
+      starter: { min: 100, max: 500 },
+      boost: { min: 500, max: 1000 },
+      advance: { min: 1000, max: 2000 },
+      premium: { min: 2000, max: 5000 }
+    };
+
+    function updateCalculator() {
+      const amount = Number(amountInput.value);
+      const pkg = packages[calcPackage.value] || packages.premium;
+      
+      amountInput.min = pkg.min;
+      amountInput.max = pkg.max;
+      
+      const rate = amount > 1000 ? 0.25 : 0.30;
+      const interest = Math.round(amount * rate);
+      const total = amount + interest;
+      
+      amountDisplay.textContent = amount;
+      document.getElementById('calcPrincipal').textContent = amount;
+      document.getElementById('calcRate').textContent = Math.round(rate * 100);
+      document.getElementById('calcInterest').textContent = interest;
+      document.getElementById('calcTotal').textContent = total;
+    }
+
+    amountInput.addEventListener('input', updateCalculator);
+    calcPackage.addEventListener('change', updateCalculator);
+    updateCalculator();
+  </script>
+</body>
+</html>

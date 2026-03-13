@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student Dashboard | Alpha Pack Capital Max">
+  <title>Dashboard | Alpha Pack Capital Max</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body style="background: #f9fafb;">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">AP</div>
+        <span>Alpha Pack Capital Max</span>
+      </a>
+      <nav class="nav-menu">
+        <li><a href="#profile" class="nav-link active">Profile</a></li>
+        <li><a href="#kyc" class="nav-link">Verify ID</a></li>
+        <li><a href="#loans" class="nav-link">My Loans</a></li>
+      </nav>
+      <div class="header-actions">
+        <button id="logoutBtn" class="btn btn-secondary btn-sm">Log Out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main style="padding: 40px 0 80px; margin-top: 70px;">
+    <div class="container">
+      <!-- Page Title -->
+      <div style="margin-bottom: 40px;">
+        <h1 style="margin-bottom: 8px;">Your Dashboard</h1>
+        <p style="color: #4b5563;">Manage your profile, verify your Student ID, and apply for loans</p>
+      </div>
+
+      <!-- KYC Status Alert -->
+      <div id="kycStatus" style="margin-bottom: 40px;"></div>
+
+      <!-- Tabs Navigation -->
+      <div style="display: flex; gap: 8px; margin-bottom: 32px; border-bottom: 2px solid #e5e7eb;">
+        <button class="tab-btn active" data-tab="profile" style="padding: 12px 24px; border: none; background: none; color: #0f1535; font-weight: 600; cursor: pointer; border-bottom: 3px solid #5283f5; margin-bottom: -2px;">
+          Profile
+        </button>
+        <button class="tab-btn" data-tab="kyc" style="padding: 12px 24px; border: none; background: none; color: #4b5563; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent;">
+          Verify Student ID
+        </button>
+        <button class="tab-btn" data-tab="loans" style="padding: 12px 24px; border: none; background: none; color: #4b5563; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent;">
+          My Loans
+        </button>
+      </div>
+
+      <!-- PROFILE TAB -->
+      <div id="profile-tab" class="tab-content">
+        <div id="studentProfile" style="margin-bottom: 32px;"></div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Edit Profile</h3>
+          </div>
+          <form id="profileForm" class="card-body">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" name="fullName" class="input" placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input type="tel" name="phone" class="input" placeholder="+267 XX XXX XXX">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Institution</label>
+              <input type="text" name="institution" class="input" placeholder="Your institution" disabled style="background: #f3f4f6;">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="alert('Profile updates coming soon');">
+              Save Changes
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- KYC TAB -->
+      <div id="kyc-tab" class="tab-content" style="display: none;">
+        <div class="card" style="margin-bottom: 32px;">
+          <div class="card-header">
+            <h3 class="card-title">Upload Student ID</h3>
+            <p class="card-description">Upload clear photos of your Student ID (front and back)</p>
+          </div>
+          <form id="kycForm" class="card-body">
+            <!-- Front Side -->
+            <div class="form-group">
+              <label class="form-label required">Student ID - Front Side</label>
+              <div style="
+                border: 2px dashed #cbd5e1;
+                border-radius: 12px;
+                padding: 40px;
+                text-align: center;
+                cursor: pointer;
+                transition: all 0.3s;
+              " id="frontDropZone">
+                <p style="font-size: 2rem; margin-bottom: 8px;">📷</p>
+                <p style="font-weight: 600; margin-bottom: 4px;">Click to upload or drag and drop</p>
+                <p style="color: #4b5563; font-size: 0.875rem; margin-bottom: 0;">PNG, JPG up to 5MB</p>
+                <input type="file" name="front" accept="image/*" style="display: none;" required>
+              </div>
+              <p id="frontName" style="font-size: 0.875rem; color: #10b981; margin-top: 8px; display: none;"></p>
+            </div>
+
+            <!-- Back Side -->
+            <div class="form-group">
+              <label class="form-label required">Student ID - Back Side</label>
+              <div style="
+                border: 2px dashed #cbd5e1;
+                border-radius: 12px;
+                padding: 40px;
+                text-align: center;
+                cursor: pointer;
+                transition: all 0.3s;
+              " id="backDropZone">
+                <p style="font-size: 2rem; margin-bottom: 8px;">📷</p>
+                <p style="font-weight: 600; margin-bottom: 4px;">Click to upload or drag and drop</p>
+                <p style="color: #4b5563; font-size: 0.875rem; margin-bottom: 0;">PNG, JPG up to 5MB</p>
+                <input type="file" name="back" accept="image/*" style="display: none;" required>
+              </div>
+              <p id="backName" style="font-size: 0.875rem; color: #10b981; margin-top: 8px; display: none;"></p>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary btn-full">
+              Submit for Verification
+            </button>
+          </form>
+        </div>
+
+        <div class="alert alert-info">
+          <p><strong>About KYC Verification</strong></p>
+          <p style="margin-bottom: 0;">Your Student ID is required to verify your identity. We review submissions within 1-2 business days. Once approved, you can apply for loans.</p>
+        </div>
+      </div>
+
+      <!-- LOANS TAB -->
+      <div id="loans-tab" class="tab-content" style="display: none;">
+        <!-- Loan List -->
+        <div style="margin-bottom: 32px;">
+          <h3 style="margin-bottom: 16px;">Your Loan Applications</h3>
+          <div id="studentLoans"></div>
+        </div>
+
+        <!-- Apply for Loan -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Apply for a Loan</h3>
+            <p class="card-description">Select a package and amount that fits your needs</p>
+          </div>
+
+          <form id="loanForm" class="card-body">
+            <!-- Package Selection -->
+            <div class="form-group">
+              <label class="form-label required">Choose Package</label>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px;">
+                <label style="display: flex; align-items: center; gap: 8px; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer;">
+                  <input type="radio" name="package" value="starter" required style="width: 18px; height: 18px;">
+                  <span>
+                    <p style="font-weight: 600; margin: 0; font-size: 0.875rem;">Starter</p>
+                    <p style="color: #4b5563; margin: 0; font-size: 0.75rem;">P100–P500</p>
+                  </span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer;">
+                  <input type="radio" name="package" value="boost" required style="width: 18px; height: 18px;">
+                  <span>
+                    <p style="font-weight: 600; margin: 0; font-size: 0.875rem;">Boost</p>
+                    <p style="color: #4b5563; margin: 0; font-size: 0.75rem;">P500–P1,000</p>
+                  </span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer;">
+                  <input type="radio" name="package" value="advance" required style="width: 18px; height: 18px;">
+                  <span>
+                    <p style="font-weight: 600; margin: 0; font-size: 0.875rem;">Advance</p>
+                    <p style="color: #4b5563; margin: 0; font-size: 0.75rem;">P1,000–P2,000</p>
+                  </span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer;">
+                  <input type="radio" name="package" value="premium" checked required style="width: 18px; height: 18px;">
+                  <span>
+                    <p style="font-weight: 600; margin: 0; font-size: 0.875rem;">Premium</p>
+                    <p style="color: #4b5563; margin: 0; font-size: 0.75rem;">P2,000–P5,000</p>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Amount -->
+            <div class="form-group">
+              <label class="form-label required">Loan Amount</label>
+              <div style="display: flex; gap: 12px; margin-bottom: 8px;">
+                <span style="flex: 1;">
+                  <input type="range" name="amount" class="input" min="2000" max="5000" value="3000" style="height: auto; cursor: pointer;">
+                </span>
+                <div style="font-size: 1.5rem; font-weight: 700; color: #4d63ff; min-width: 120px; text-align: right;">
+                  P<span id="loanAmount">3000</span>
+                </div>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #4b5563;">
+                <span>Min: P<span id="minAmount">2000</span></span>
+                <span>Max: P<span id="maxAmount">5000</span></span>
+              </div>
+            </div>
+
+            <!-- Repayment Period -->
+            <div class="form-group">
+              <label class="form-label required">Repayment Period</label>
+              <select name="repaymentDays" class="input" required>
+                <option value="14">14 days</option>
+                <option value="21">21 days</option>
+                <option value="30" selected>30 days</option>
+              </select>
+            </div>
+
+            <!-- Purpose -->
+            <div class="form-group">
+              <label class="form-label required">Loan Purpose</label>
+              <textarea name="purpose" class="input" placeholder="e.g., Tuition, Accommodation, Books..." minlength="10" required></textarea>
+            </div>
+
+            <!-- Contact Phone -->
+            <div class="form-group">
+              <label class="form-label required">Contact Phone</label>
+              <input type="tel" name="phone" class="input" placeholder="+267 XX XXX XXX" required>
+            </div>
+
+            <!-- Breakdown -->
+            <div style="background: #f3f4f6; padding: 20px; border-radius: 12px; margin-bottom: 24px;">
+              <p style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="color: #4b5563;">Principal:</span>
+                <span style="font-weight: 700;">P<span id="breakdown-principal">3000</span></span>
+              </p>
+              <p style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="color: #4b5563;">Interest Rate:</span>
+                <span style="font-weight: 700;"><span id="breakdown-rate">25</span>%</span>
+              </p>
+              <p style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="color: #4b5563;">Interest Amount:</span>
+                <span style="font-weight: 700;">P<span id="breakdown-interest">750</span></span>
+              </p>
+              <div style="border-top: 2px solid #d1d5db; padding-top: 12px; display: flex; justify-content: space-between;">
+                <span style="color: #0f1535; font-weight: 700;">Total to Repay:</span>
+                <span style="font-size: 1.25rem; font-weight: 700; color: #4d63ff;">P<span id="breakdown-total">3750</span></span>
+              </div>
+            </div>
+
+            <!-- Terms -->
+            <label style="display: flex; gap: 8px; margin-bottom: 24px; cursor: pointer;">
+              <input type="checkbox" name="terms" required style="width: 18px; height: 18px; margin-top: 2px;">
+              <span style="font-size: 0.875rem; color: #4b5563;">
+                I agree to the loan terms and conditions. I understand I must repay the full amount plus interest within the selected period.
+              </span>
+            </label>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary btn-full btn-lg">
+              Submit Loan Application
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: white; border-top: 1px solid #e5e7eb; padding: 32px 0; color: #4b5563; font-size: 0.875rem;">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
+        <div>
+          <p style="font-weight: 700; color: #0f1535; margin-bottom: 8px;">Need Help?</p>
+          <p style="margin: 0;"><a href="https://wa.me/26776807549" style="color: #4d63ff; text-decoration: none;">+267 76 807 549</a></p>
+        </div>
+      </div>
+      <div style="border-top: 1px solid #e5e7eb; padding-top: 16px; text-align: center;">
+        © 2024 Alpha Pack Capital Max. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script type="module">
+    import { getPackage, calcLoan } from './assets/js/modules/config.js';
+
+    // Tab Switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabName = btn.dataset.tab;
+
+        // Hide all tabs
+        document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.style.color = '#4b5563';
+          b.style.borderBottomColor = 'transparent';
+        });
+
+        // Show selected tab
+        document.getElementById(tabName + '-tab').style.display = 'block';
+        btn.style.color = '#0f1535';
+        btn.style.borderBottomColor = '#5283f5';
+      });
+    });
+
+    // KYC File Upload
+    ['front', 'back'].forEach(side => {
+      const dropZone = document.getElementById(side + 'DropZone');
+      const input = document.querySelector(`input[name="${side}"]`);
+      const nameEl = document.getElementById(side + 'Name');
+
+      dropZone.addEventListener('click', () => input.click());
+
+      dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = '#5283f5';
+        dropZone.style.background = '#f0f4ff';
+      });
+
+      dropZone.addEventListener('dragleave', () => {
+        dropZone.style.borderColor = '#cbd5e1';
+        dropZone.style.background = 'transparent';
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = '#cbd5e1';
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          input.files = files;
+          nameEl.textContent = '✓ ' + files[0].name;
+          nameEl.style.display = 'block';
+        }
+      });
+
+      input.addEventListener('change', () => {
+        if (input.files.length > 0) {
+          nameEl.textContent = '✓ ' + input.files[0].name;
+          nameEl.style.display = 'block';
+        }
+      });
+    });
+
+    // Loan Calculator
+    const packages = {
+      starter: { min: 100, max: 500 },
+      boost: { min: 500, max: 1000 },
+      advance: { min: 1000, max: 2000 },
+      premium: { min: 2000, max: 5000 }
+    };
+
+    const updateCalculation = () => {
+      const pkg = packages[document.querySelector('input[name="package"]:checked').value] || packages.premium;
+      const amount = Number(document.querySelector('input[name="amount"]').value);
+
+      document.getElementById('minAmount').textContent = pkg.min;
+      document.getElementById('maxAmount').textContent = pkg.max;
+      document.querySelector('input[name="amount"]').min = pkg.min;
+      document.querySelector('input[name="amount"]').max = pkg.max;
+
+      const calc = calcLoan(amount);
+
+      document.getElementById('loanAmount').textContent = amount;
+      document.getElementById('breakdown-principal').textContent = calc.principal;
+      document.getElementById('breakdown-rate').textContent = calc.rate;
+      document.getElementById('breakdown-interest').textContent = calc.interest;
+      document.getElementById('breakdown-total').textContent = calc.total;
+    };
+
+    document.querySelectorAll('input[name="package"]').forEach(radio => {
+      radio.addEventListener('change', updateCalculation);
+    });
+
+    document.querySelector('input[name="amount"]').addEventListener('input', updateCalculation);
+
+    updateCalculation();
+  </script>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Setup | Alpha Pack Capital Max</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    body { background: linear-gradient(135deg, #4d63ff 0%, #2d3f9f 100%); min-height: 100vh; display: flex; align-items: center; }
+    .setup-container { max-width: 500px; width: 90%; margin: 0 auto; }
+    .setup-card { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 25px 50px rgba(0,0,0,0.25); }
+    .setup-title { font-size: 1.875rem; font-weight: 700; color: #0f1535; text-align: center; margin-bottom: 12px; }
+    .setup-subtitle { color: #4b5563; text-align: center; margin-bottom: 32px; font-size: 0.95rem; }
+    .warning { background: #fef3e0; border-left: 4px solid #f0a832; padding: 16px; border-radius: 8px; margin-bottom: 24px; font-size: 0.875rem; color: #7a3607; }
+  </style>
+</head>
+<body>
+  <div class="setup-container">
+    <div class="setup-card">
+      <h1 class="setup-title">🛡️ Create Admin Account</h1>
+      <p class="setup-subtitle">One-time admin setup. Delete this page after using!</p>
+      
+      <div class="warning">
+        ⚠️ <strong>IMPORTANT:</strong> After creating the admin account, go to GitHub and DELETE this entire file (admin/setup.html) immediately. Never leave it on a live server!
+      </div>
+
+      <form id="setupForm" style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label form-required">Admin Email</label>
+          <input type="email" name="email" class="input" placeholder="admin@example.com" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label form-required">Password (10+ characters)</label>
+          <input type="password" name="password" class="input" placeholder="Strong password" minlength="10" required>
+          <div style="font-size: 0.75rem; color: #4b5563; margin-top: 4px;">
+            ✓ At least 10 characters | ✓ Mix of uppercase & lowercase
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label form-required">Confirm Password</label>
+          <input type="password" name="confirm" class="input" placeholder="Repeat password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full btn-lg" style="margin-top: 24px;">
+          Create Admin Account
+        </button>
+
+        <div id="message" style="display: none; padding: 12px; border-radius: 8px; text-align: center; font-weight: 500;"></div>
+      </form>
+
+      <p style="color: #4b5563; font-size: 0.875rem; text-align: center; margin-top: 24px;">
+        After creating the admin account:<br>
+        1. Go to <strong>/admin/login.html</strong> to log in<br>
+        2. Delete this file from GitHub (CRITICAL!)
+      </p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script type="module">
+    import { SUPABASE_URL, SUPABASE_ANON_KEY } from '../assets/js/modules/config.js';
+
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const form = document.getElementById('setupForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = form.email.value.trim();
+      const password = form.password.value;
+      const confirm = form.confirm.value;
+
+      // Validation
+      if (password !== confirm) {
+        showMessage('❌ Passwords do not match', 'danger');
+        return;
+      }
+      if (password.length < 10) {
+        showMessage('❌ Password must be at least 10 characters', 'danger');
+        return;
+      }
+
+      const btn = form.querySelector('button');
+      btn.disabled = true;
+      btn.textContent = 'Creating admin...';
+
+      try {
+        // Create auth user
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: { data: { role: 'admin' } }
+        });
+
+        if (error) throw new Error(error.message);
+
+        // Create profile
+        if (data.user) {
+          const { error: profileError } = await supabase
+            .from('profiles')
+            .insert({
+              id: data.user.id,
+              email,
+              role: 'admin',
+              kyc_status: 'approved'
+            });
+          
+          if (profileError) throw new Error(profileError.message);
+        }
+
+        showMessage('✅ Admin account created! Go to /admin/login.html to log in. DELETE THIS FILE NOW!', 'success');
+        setTimeout(() => {
+          window.location.href = '/admin/login.html';
+        }, 2000);
+
+      } catch (err) {
+        showMessage(`❌ ${err.message}`, 'danger');
+        btn.disabled = false;
+        btn.textContent = 'Create Admin Account';
+      }
+    });
+
+    function showMessage(text, type) {
+      message.textContent = text;
+      message.style.display = 'block';
+      message.style.background = type === 'success' ? '#e6f9f5' : '#fef3e0';
+      message.style.color = type === 'success' ? '#047857' : '#7a3607';
+    }
+  </script>
+</body>
+</html>
